@@ -15,11 +15,14 @@
   </style>
 </head>
 <body>
+  
+  <div class="overlay"></div>
+
   <header>
     <div class="logo"> 
       <img src="./images/logo.svg" alt="logo">
     </div>
-  <nav>
+  <nav class="desktop-menu">
     <ul>
       <li><a href="#">Collections</a></li>
       <li><a href="#">Men</a></li>
@@ -27,34 +30,69 @@
       <li><a href="#">About</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-  </nav>
+  </nav>  
+
+  <img class="hamburger-menu" src="./images/icon-menu.svg" alt="menu">
+    <div class="mobile-menu">
+      <img src="./images/icon-close.svg" alt="close">
+      <nav class="mobile-nav">
+        <ul>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Men</a></li>
+          <li><a href="#">Women</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
     <div class="cart">
       <button class="cart-button"><img src="./images/icon-cart.svg" alt="cart"></button>
       <img class="avatar" src="./images/image-avatar.png" alt="avatar">
     </div>
   </header>
   <main>
-  <div class="gallery">
-    <img src="./images/image-product-1.jpg" alt="sneakers">
-    <img src="./images/image-product-2.jpg" alt="sneakers">
-    <img src="./images/image-product-3.jpg" alt="sneakers">
-    <img src="./images/image-product-4.jpg" alt="sneakers">
+  <div class="product-gallery">
+    <div class="main-image">
+      <button class="prev-arrow" aria-label="Previous image"> <img src="./images/icon-previous.svg" alt="previous"> </button>
+      <img src="./images/image-product-1.jpg" alt="sneakers view 1" class="active">
+      <img src="./images/image-product-2.jpg" alt="sneakers view 2">
+      <img src="./images/image-product-3.jpg" alt="sneakers view 3">
+      <img src="./images/image-product-4.jpg" alt="sneakers view 4">
+      <button class="next-arrow" aria-label="Next image"> <img src="./images/icon-next.svg" alt="next"> </button>
+    </div>
+    <div class="thumbnail">
+      <img src="./images/image-product-1-thumbnail.jpg" alt="thumbnail sneakers 1" class="thumbnail-active">
+      <img src="./images/image-product-2-thumbnail.jpg" alt="thumbnail sneakers 2">
+      <img src="./images/image-product-3-thumbnail.jpg" alt="thumbnail sneakers 3">
+      <img src="./images/image-product-4-thumbnail.jpg" alt="thumbnail sneakers 4">
+    </div>
   </div>
-    
-  Sneaker Company
 
-  Fall Limited Edition Sneakers
+  <div class="product-description">
+   <h1> Sneaker Company </h1>
 
-  These low-profile sneakers are your perfect casual wear companion. Featuring a 
-  durable rubber outer sole, they’ll withstand everything the weather can offer.
+   <h2> Fall Limited Edition Sneakers </h2>
 
-  $125.00
-  50%
-  $250.00
-
-  0
-  Add to cart
- </main>
+  <p> These low-profile sneakers are your perfect casual wear companion. Featuring a 
+  durable rubber outer sole, they’ll withstand everything the weather can offer. </p>
+    <div class="price">
+      <p> $125.00 </p>
+      <span> 50% </span>
+    </div>
+  <p> $250.00 </p>
+  
+    <div class ="choose-product">
+      <div class="quantity">
+      <button class="minus"><img src="./images/icon-minus.svg" alt="minus"></button>
+      <span>0</span>
+      <button class="plus"><img src="./images/icon-plus.svg" alt="plus"></button>
+      </div>
+      
+      <button class="add-to-cart"><img src="./images/icon-cart.svg" alt="cart"> Add to cart </button>
+    </div>
+  </div>
+</main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
