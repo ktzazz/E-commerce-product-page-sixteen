@@ -24,7 +24,12 @@
   display: none;
 }
 
-
+body {
+  font-size: var(--Font-size);
+  font-family: var(--Font-family);
+  font-weight: var(--Font-weight-normal);
+  background-color: var(--Light-grayish-blue);
+}
 
 
 
