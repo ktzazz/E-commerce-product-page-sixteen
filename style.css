@@ -24,12 +24,72 @@
   display: none;
 }
 
-body {
-  font-size: var(--Font-size);
-  font-family: var(--Font-family);
-  font-weight: var(--Font-weight-normal);
-  background-color: var(--Light-grayish-blue);
+.mobile-menu{
+  width: 0;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-block-start: 11rem;
+  z-index: 3;
 }
+
+.mobile-nav a {
+  padding: 0.9rem 1.5rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: var(--Very-dark-blue);
+  display: block;
+  transition: 0.3s;
+}
+
+.mobile-menu.open {
+  width: 26rem;
+}
+
+.header-container{
+  display:grid;
+  grid-template-columns: 2rem auto auto;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.hamburger-menu{
+  margin-block-start: 0.35rem;
+}
+
+.logo{
+  margin-inline-start: 0.5rem;
+}
+
+.cart{
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-button, .cart-button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  align-self: center;
+}
+
+.avatar{
+  width: 2rem;
+  height: 2rem;
+  align-self: center;
+}
+
+
+
+
 
 
 
