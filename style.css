@@ -134,6 +134,46 @@ header{
   align-self: center;
 }
 
+main{
+  width: min(100%, 85rem);
+  justify-self: center;
+  margin-block-start: 2rem;
+}
+
+.prev-arrow img, .next-arrow img{
+  width: 0.63rem;
+}
+
+.arrow-buttons{
+  display: flex;
+  flex-direction: row;
+  width: min(100%, 35rem);
+  padding: 0 1rem;
+  justify-content: space-between;
+  position: absolute;
+  top: min(33%, 15rem);
+}
+
+.product-gallery button{
+  background-color: var(--White);
+  width: 2.7rem;
+  height: 2.7rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.main-image img{
+  width: min(100%,35rem);
+  height: 20rem;
+  object-fit: cover;
+}
+
+.inactive{
+  display: none;
+}
+
 
 
 
@@ -170,6 +210,14 @@ header{
 
   .header-container{
     border-block-end: 1px solid hsl(220deg 14% 75% / 35%);
+  }
+
+  .main-image img{
+  height: 30rem;
+  }
+
+  .arrow-buttons{
+    display: none;
   }
 
 }
