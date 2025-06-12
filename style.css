@@ -147,11 +147,11 @@ main{
 .arrow-buttons{
   display: flex;
   flex-direction: row;
-  width: min(100%, 35rem);
+  width: min(100%, 42rem);
   padding: 0 1rem;
   justify-content: space-between;
   position: absolute;
-  top: min(33%, 15rem);
+  top: clamp(14rem, 40vw, 21rem);
 }
 
 .product-gallery button{
@@ -165,12 +165,16 @@ main{
 }
 
 .main-image img{
-  width: min(100%,35rem);
+  width: min(100%,55rem);
   height: 20rem;
   object-fit: cover;
 }
 
 .inactive{
+  display: none;
+}
+
+.thumbnail{
   display: none;
 }
 
@@ -188,6 +192,39 @@ main{
 
 
 
+
+
+@media (min-width: 768px) {
+ 
+  .main-image img{
+    height: 45rem;
+}
+
+  .product-gallery{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-block-start: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+  .thumbnail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-block-start: 2rem;
+    gap: 2.5rem;
+    width: calc(100% - 3.2rem);
+  }
+
+  .thumbnail img{
+    cursor: pointer;
+  }
+
+}
 
 
 
