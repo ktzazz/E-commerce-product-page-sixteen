@@ -181,6 +181,38 @@ main {
   display: none;
 }
 
+.product-description {
+  padding: 2rem;
+}
+
+h1 {
+  font-size: clamp(0.7rem, 3vw, 0.9rem);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.25rem;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 8vw, 3rem);
+  margin: 1rem 0;
+}
+
+h1,
+p {
+  color: var(--Dark-grayish-blue);
+}
+
+.description {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  margin-block-start: 1.2rem;
+  margin-block-end: 1.5rem;
+  padding-inline-end: min(3vw, 10rem);
+}
+
+.price p {
+  color: var(--Black);
+}
+
 @media (min-width: 768px) {
   .main-image img {
     height: auto;
@@ -249,7 +281,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 4rem 7rem;
-    align-content: center;
+    align-items: center;
   }
 
   .thumbnail img {
