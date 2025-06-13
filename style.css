@@ -228,13 +228,15 @@ p,
   color: var(--White);
   background-color: var(--Black);
   padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
-  font-weight: var(--font-weight-bold);
+  border-radius: 0.35rem;
+  font-weight: var(--Font-weight-normal);
+  font-size: 0.8rem;
   justify-self: center;
 }
 
 .discount {
   text-decoration: line-through;
+  font-size: 0.9rem;
   font-weight: var(--font-weight-bold);
   justify-self: end;
 }
@@ -295,6 +297,8 @@ footer {
   margin: 1rem 0;
   color: var(--Dark-grayish-blue);
 }
+
+/* HOVER AND ACTIVE STATES  */
 
 @media (min-width: 768px) {
   header {
@@ -393,5 +397,9 @@ footer {
     grid-template-columns: 1fr 1fr;
     padding: 4rem 7rem;
     align-items: center;
+  }
+
+  .add-to-cart {
+    box-shadow: 1px 18px 3rem 0px rgba(255, 125, 26, 0);
   }
 }
