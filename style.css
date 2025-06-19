@@ -388,6 +388,12 @@ footer {
     border-block-end: 1px solid hsl(220deg 14% 75% / 35%);
   }
 
+  nav a:hover,
+  nav a:active {
+    border-block-end: 1px solid var(--Orange);
+    padding-block-end: clamp(1.5rem, 3vw, 3rem);
+  }
+
   .arrow-buttons {
     display: none;
   }
