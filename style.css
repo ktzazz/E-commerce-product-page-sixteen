@@ -38,7 +38,8 @@ header {
   width: min(90%, 85rem);
   justify-self: center;
   align-items: center;
-  padding: clamp(1.5rem, 3vw, 3rem);
+  padding-inline-start: clamp(1.5rem, 3vw, 3rem);
+  padding-inline-end: clamp(1.5rem, 3vw, 3rem);
 }
 
 .desktop-menu {
@@ -377,6 +378,7 @@ footer {
     grid-template-columns: repeat(5, auto);
     gap: 2rem;
     justify-content: flex-start;
+    margin: 3rem 0;
   }
 
   .mobile-menu,
@@ -391,7 +393,6 @@ footer {
   nav a:hover,
   nav a:active {
     border-block-end: 1px solid var(--Orange);
-    padding-block-end: clamp(1.5rem, 3vw, 3rem);
   }
 
   .arrow-buttons {
