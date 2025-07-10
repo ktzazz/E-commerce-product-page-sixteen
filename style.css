@@ -379,7 +379,10 @@ footer {
 
   .desktop-menu a::after {
     content: ""; /* so the pseudo-element appears */
-    position: absolute; /* to place it where needed */
+    position: absolute; /* to place it where needed, 
+    position: absolute; en ::after: Saca la línea del flujo normal del documento.
+    Esto significa que no ocupa espacio, por lo que no empujará los elementos de menú.
+    Su posición (bottom, left) se calcula en relación con su padre (a). */
     bottom: 0;
     left: 0;
     width: 100%; /* the line will cover the lenght of the "a" */
@@ -389,6 +392,13 @@ footer {
     transform-origin: bottom left;
     transition: transform 0.3s ease-out;
   }
+
+  /*::after es como agregar un <span> dentro del elemento padre, tipo: <a>Texto<span></span></a>
+  si agregas un position:absolute; ese span se convertiria como una capa que iria encima del elemento padre.
+  el after seria la capa 1 y el padre la capa 0.
+  ::before y ::after funcionan igual, la unica diferencia es donde se coloca:
+  ::before =  <a><span></span>Texto</a>
+  ::after = <a>Texto<span></span></a>*/
 
   .desktop-menu a:hover::after,
   .desktop-menu a:focus::after {
