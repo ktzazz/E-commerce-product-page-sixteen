@@ -68,6 +68,10 @@ header {
   justify-content: flex-end;
 }
 
+.cart-path {
+  fill: var(--Dark-grayish-blue);
+}
+
 .mobile-menu {
   width: 0;
   position: fixed;
@@ -299,7 +303,36 @@ footer {
   color: var(--Dark-grayish-blue);
 }
 
-/* HOVER AND ACTIVE STATES  */
+/* HOVER, FOCUS AND ACTIVE STATES  */
+
+.avatar:hover,
+.avatar:focus {
+  outline: none;
+  border: 2px solid var(--Orange);
+  border-radius: 2rem;
+  cursor: pointer;
+}
+
+.thumbnail img:hover,
+.thumbnail img:focus {
+  outline: none;
+  border: 2px solid var(--Orange);
+  border-radius: 10%;
+}
+
+.cart-button:hover .cart-path {
+  fill: var(--Black);
+}
+
+.cart-button:focus {
+  outline: none;
+  border: 1px solid var(--Orange);
+  padding: 0.2rem;
+}
+
+.cart-button.active .cart-path {
+  fill: var(--Black);
+}
 
 @media (min-width: 768px) {
   .main-image img {
