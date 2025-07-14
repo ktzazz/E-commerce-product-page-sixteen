@@ -193,7 +193,7 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(1.5rem, 8vw, 3rem);
+  font-size: clamp(1.5rem, 8vw, 2.8rem);
   margin: 1rem 0;
 }
 
@@ -204,7 +204,7 @@ p,
 }
 
 .description {
-  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-size: clamp(0.85rem, 3vw, 0.9rem);
   margin-block-start: 1.2rem;
   margin-block-end: 1.5rem;
   padding-inline-end: min(3vw, 10rem);
@@ -430,8 +430,9 @@ footer {
   main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 4rem 7rem;
+    padding: 4rem 10rem;
     align-items: center;
+    column-gap: 5rem;
   }
 
   .add-to-cart {
