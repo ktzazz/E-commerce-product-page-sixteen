@@ -313,7 +313,40 @@ footer {
   cursor: pointer;
 }
 
-.thumbnail img:hover,
+.wrapper {
+  position: relative; /* ¡Importante! Permite posicionar el pseudo-elemento dentro */
+  overflow: hidden; /* Oculta cualquier parte del pseudo-elemento que se salga del contenedor */
+  display: inline-block; /* O block, dependiendo de tu layout, para que el wrapper no ocupe todo el ancho */
+  /* Asegúrate de que el contenedor tenga un ancho/alto definido o que la imagen lo defina. */
+}
+
+.wrapper::before {
+  content: ""; /* Obligatorio para que el pseudo-elemento aparezca */
+  position: absolute; /* Saca la capa del flujo y la posiciona sobre el padre */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0
+  ); /* Empieza transparente (blanco con 0% de opacidad) */
+  transition: background-color 0.3s ease; /* Transición suave para la opacidad */
+  pointer-events: none; /* ¡Importante! Permite hacer clic a través del overlay al elemento subyacente */
+  z-index: 1; /* Asegura que el overlay esté por encima de la imagen */
+}
+
+.wrapper:hover::before {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Se vuelve blanco semi-transparente al hover (50% de opacidad) */
+}
+
 .thumbnail img:focus {
   outline: none;
   border: 2px solid var(--Orange);
