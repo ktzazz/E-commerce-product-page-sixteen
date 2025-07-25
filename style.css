@@ -132,7 +132,7 @@ header {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  z-index: 5;
 }
 
 .avatar {
@@ -281,7 +281,7 @@ p,
 }
 
 .minus {
-  margin-block-start: -0.3rem;
+  margin-block-start: -0.2rem;
 }
 
 .minus-path,
@@ -343,8 +343,8 @@ footer {
   background-color: rgba(255, 125, 26, 0.527);
 }
 
-.minus-path:hover,
-.plus-path:hover {
+.minus:hover .minus-path,
+.plus:hover .plus-path {
   fill: rgba(255, 125, 26, 0.527);
 }
 
