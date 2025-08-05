@@ -21,4 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
       overlay.style.display = "none";
     });
   }
+
+  // lightbox gallery
+  const mainImagesContainer = document.querySelector(".main-image");
+  const mainImages = document.querySelectorAll(".main-image img");
+  const thumbnails = document.querySelectorAll(".thumbnail img");
+  const prevArrow = document.querySelector(".prev-arrow");
+  const nextArrow = document.querySelector(".next-arrow");
+
+  let currentImageIndex = 0;
 });
