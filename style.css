@@ -358,6 +358,10 @@ footer {
 
 /* HOVER, FOCUS AND ACTIVE STATES END */
 
+#lightbox-modal {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .main-image img {
     height: auto;

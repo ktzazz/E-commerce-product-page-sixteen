@@ -105,6 +105,32 @@
           </button>
         </div>
         <div class="product">
+          <!-- lightbox -->
+          <div id="lightbox-modal">
+            <button class="close-lightbox-btn">
+              <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"
+                  fill-rule="nonzero"
+                />
+              </svg>
+            </button>
+            <div class="lightbox-main-image-container">
+              <img
+                id="lightbox-main-image"
+                src=""
+                alt="Main product view in lightbox"
+              />
+              <button class="lightbox-arrow prev-arrow">
+                <img src="./images/icon-previous.svg" />
+              </button>
+              <button class="lightbox-arrow next-arrow">
+                <img src="./images/icon-next.svg" />
+              </button>
+            </div>
+            <div class="lightbox-thumbnails"></div>
+          </div>
+          <!--end lightbox, div class="lightbox-thumbnails" stays empty so the js can add the images so the code will look cleaner-->
           <div class="main-image">
             <img
               src="./images/image-product-1.jpg"
