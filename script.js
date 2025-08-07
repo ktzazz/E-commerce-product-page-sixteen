@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- 1. Seleccionar todos los elementos necesarios ---
-  // Galería principal
+  // main Gallery
   const mainImages = document.querySelectorAll(".main-image img");
   const mainThumbnails = document.querySelectorAll(".thumbnail img");
   const prevArrowMain = document.querySelector(".product-gallery .prev-arrow");
@@ -39,16 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevArrowLightbox = document.querySelector(".lightbox-arrow-prev");
   const nextArrowLightbox = document.querySelector(".lightbox-arrow-next");
 
-  // --- 2. Variable de estado y datos ---
+  // Variable of the gallery state and media quary of the lightbox
   let currentImageIndex = 0;
   const isDesktop = window.matchMedia("(min-width: 780px)");
 
-  // --- 3. Funciones principales ---
   /**
-   * Actualiza la imagen principal y la miniatura activa.
-   * @param {number} newIndex - El índice de la imagen que se mostrará.
-   * @param {string} type - 'main' para la galería principal, 'lightbox' para el lightbox.
+   * Updates the main img and thumbnail
+   * @param {number} newIndex - img index that will be showing
+   * @param {string} type - 'main' for main gallery, 'lightbox' for lightbox.
    */
+
   function updateGallery(newIndex, type) {
     // Lógica para que el índice se mantenga dentro del rango del array (circular)
     if (newIndex >= mainImages.length) {
@@ -109,6 +108,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Función para cerrar el lightbox
   function closeLightbox() {
     lightboxContainer.classList.remove("show");
+  }
+
+  if (lightboxContainer) {
+    // verifies if the lightbox.show exists
+    lightboxContainer.addEventListener("click", function () {
+      lightboxContainer.classList.remove("show");
+    });
   }
 
   // Función para crear las miniaturas del lightbox (se llama una vez)

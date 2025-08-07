@@ -161,7 +161,7 @@ main {
   top: clamp(14rem, 54vw, 32rem);
 }
 
-.product-gallery button {
+.product-gallery button:not(.close-lightbox-btn) {
   background-color: var(--White);
   width: 2.7rem;
   height: 2.7rem;
@@ -359,27 +359,22 @@ footer {
 /* HOVER, FOCUS AND ACTIVE STATES END */
 
 #lightbox-modal {
-  display: none; /* Oculto por defecto */
-
-  /* ----- Propiedades CLAVE para que no empuje el contenido ----- */
-  position: fixed; /* Lo saca del flujo y lo fija a la ventana del navegador */
-  top: 0; /* Se ancla en la parte superior de la ventana */
-  left: 0; /* Se ancla en el lado izquierdo de la ventana */
-  width: 100%; /* Ocupa todo el ancho de la ventana */
-  height: 100vh; /* Ocupa todo el alto de la ventana (vh = viewport height) */
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
   align-items: center;
   justify-content: center;
-  /* ----- Estilos para el fondo y centrado ----- */
-  background-color: rgba(0, 0, 0, 0.75); /* Fondo semitransparente oscuro */
-  z-index: 100; /* Asegura que esté por encima de todos los demás elementos */
-
-  /* ----- Para centrar el contenido (la imagen y las flechas) ----- */
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 100;
 }
 
 .lightbox-main-image-container {
   display: flex;
-  flex-direction: column; /* Apila el contenido verticalmente */
-  width: clamp(23rem, 30%, 46rem);
+  flex-direction: column;
+  width: clamp(23rem, 38%, 36rem);
   align-items: center;
 }
 
@@ -394,14 +389,14 @@ footer {
   display: flex;
   flex-direction: row;
   margin-block-start: 2rem;
-  width: min(20%, 46rem);
+  width: min(33%, 30rem);
   justify-content: space-between;
 }
 
 .lightbox-arrows {
   display: flex;
   flex-direction: row;
-  width: clamp(26rem, 33%, 46rem);
+  width: clamp(26rem, 42%, 38.5rem);
   justify-content: space-between;
   align-items: center;
   position: absolute;
@@ -417,6 +412,28 @@ footer {
 .lightbox-arrows button {
   width: 3.2rem;
   height: 3.2rem;
+}
+
+.close-lightbox-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-block-end: 1.5rem;
+}
+
+.close-lightbox-btn path {
+  fill: var(--White);
+}
+
+.close-lightbox-btn:hover path,
+.close-lightbox-btn:focus path {
+  fill: var(--Orange);
+}
+
+.lightbox-arrows button:hover path,
+.lightbox-arrows button:focus path {
+  stroke: var(--Orange);
 }
 
 #lightbox-modal.show {
