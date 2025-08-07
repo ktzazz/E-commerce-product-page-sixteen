@@ -22,20 +22,35 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // lightbox gallery
-  const mainImagesContainer = document.querySelector(".main-image");
+  // --- 1. Seleccionar todos los elementos necesarios ---
+  // Galería principal
   const mainImages = document.querySelectorAll(".main-image img");
   const mainThumbnails = document.querySelectorAll(".thumbnail img");
+  const prevArrowMain = document.querySelector(".product-gallery .prev-arrow");
+  const nextArrowMain = document.querySelector(".product-gallery .next-arrow");
+
+  // Lightbox
+  const lightboxContainer = document.getElementById("lightbox-modal");
+  const closeLightboxBtn = document.querySelector(".close-lightbox-btn");
+  const lightboxMainImage = document.getElementById("lightbox-main-image");
   const lightboxThumbnailsContainer = document.querySelector(
     ".lightbox-thumbnails"
   );
-  const lightboxContainer = document.querySelector("#lightbox-modal");
-  const prevArrow = document.querySelector(".prev-arrow");
-  const nextArrow = document.querySelector(".next-arrow");
+  const prevArrowLightbox = document.querySelector(".lightbox-arrow-prev");
+  const nextArrowLightbox = document.querySelector(".lightbox-arrow-next");
 
+  // --- 2. Variable de estado y datos ---
   let currentImageIndex = 0;
+  const isDesktop = window.matchMedia("(min-width: 780px)");
 
-  function updateGallery(newIndex) {
+  // --- 3. Funciones principales ---
+  /**
+   * Actualiza la imagen principal y la miniatura activa.
+   * @param {number} newIndex - El índice de la imagen que se mostrará.
+   * @param {string} type - 'main' para la galería principal, 'lightbox' para el lightbox.
+   */
+  function updateGallery(newIndex, type) {
+    // Lógica para que el índice se mantenga dentro del rango del array (circular)
     if (newIndex >= mainImages.length) {
       newIndex = 0;
     } else if (newIndex < 0) {
@@ -43,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     currentImageIndex = newIndex;
 
+    // Actualiza la imagen principal de la galería
     mainImages.forEach((img, index) => {
       if (index === currentImageIndex) {
         img.classList.remove("inactive");
@@ -53,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    // Actualiza las miniaturas de la galería
     mainThumbnails.forEach((thumbnail, index) => {
       if (index === currentImageIndex) {
         thumbnail.classList.add("thumbnail-active");
@@ -60,29 +77,92 @@ document.addEventListener("DOMContentLoaded", function () {
         thumbnail.classList.remove("thumbnail-active");
       }
     });
+
+    // Actualiza la imagen principal del lightbox si está abierto
+    if (type === "lightbox" || lightboxContainer.classList.contains("show")) {
+      lightboxMainImage.src = mainImages[currentImageIndex].src;
+      // También actualizar la clase 'active' en las miniaturas del lightbox si las creas dinámicamente.
+      const lightboxThumbnails =
+        lightboxThumbnailsContainer.querySelectorAll("img");
+      lightboxThumbnails.forEach((thumb, index) => {
+        if (index === currentImageIndex) {
+          thumb.classList.add("thumbnail-active");
+        } else {
+          thumb.classList.remove("thumbnail-active");
+        }
+      });
+    }
   }
 
-  prevArrow.addEventListener("click", () =>
-    updateGallery(currentImageIndex - 1)
+  // Función para abrir el lightbox
+  function openLightbox() {
+    lightboxContainer.classList.add("show");
+    lightboxMainImage.src = mainImages[currentImageIndex].src;
+    // Opcional: crea las miniaturas del lightbox aquí si aún no existen
+    if (lightboxThumbnailsContainer.children.length === 0) {
+      createLightboxThumbnails();
+    }
+    // Sincroniza la miniatura activa en el lightbox
+    updateGallery(currentImageIndex, "lightbox");
+  }
+
+  // Función para cerrar el lightbox
+  function closeLightbox() {
+    lightboxContainer.classList.remove("show");
+  }
+
+  // Función para crear las miniaturas del lightbox (se llama una vez)
+  function createLightboxThumbnails() {
+    mainThumbnails.forEach((thumbnail, index) => {
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("wrapper"); // Agrega la clase wrapper si la necesitas
+
+      const lightboxThumbnail = thumbnail.cloneNode(true);
+      lightboxThumbnail.classList.add("lightbox-thumbnail-img");
+
+      // Asigna un evento de clic a las miniaturas del lightbox
+      wrapper.addEventListener("click", () => updateGallery(index, "lightbox"));
+
+      wrapper.appendChild(lightboxThumbnail);
+      lightboxThumbnailsContainer.appendChild(wrapper);
+    });
+  }
+
+  // --- 4. Eventos de la galería principal (móvil y escritorio) ---
+  // Navegación con flechas
+  prevArrowMain.addEventListener("click", () =>
+    updateGallery(currentImageIndex - 1, "main")
   );
-  nextArrow.addEventListener("click", () =>
-    updateGallery(currentImageIndex + 1)
+  nextArrowMain.addEventListener("click", () =>
+    updateGallery(currentImageIndex + 1, "main")
   );
 
+  // Navegación con miniaturas
   mainThumbnails.forEach((thumbnail, index) => {
-    thumbnail.addEventListener("click", () => updateGallery(index));
+    thumbnail.addEventListener("click", () => updateGallery(index, "main"));
   });
 
-  const onDesktop = window.matchMedia("(min-width: 768px)");
-
-  if (onDesktop.matches) {
-    lightboxContainer.style.display = "block";
-  }
-
-  mainThumbnails.forEach((thumbnail) => {
-    //clones the thumbnail element so i don't copy/paste on the html
-    const lightboxThumbnail = thumbnail.cloneNode(true);
-    //adds the lighbox style class
-    lightboxThumbnail.classList.add("lightbox-thumbnail-img");
+  // Abrir lightbox solo en escritorio al hacer clic en la imagen principal
+  const mainImageContainer = document.querySelector(".main-image");
+  mainImageContainer.addEventListener("click", () => {
+    if (isDesktop.matches) {
+      openLightbox();
+    }
   });
+
+  // --- 5. Eventos del lightbox (solo escritorio) ---
+  closeLightboxBtn.addEventListener("click", closeLightbox);
+
+  prevArrowLightbox.addEventListener("click", () =>
+    updateGallery(currentImageIndex - 1, "lightbox")
+  );
+  nextArrowLightbox.addEventListener("click", () =>
+    updateGallery(currentImageIndex + 1, "lightbox")
+  );
+
+  // Llama a esta función al inicio para crear las miniaturas del lightbox
+  createLightboxThumbnails();
+
+  // Inicializa la galería
+  updateGallery(0, "main");
 });
