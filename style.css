@@ -431,8 +431,7 @@ footer {
   fill: var(--Orange);
 }
 
-.lightbox-arrows button:hover path,
-.lightbox-arrows button:focus path {
+.lightbox-arrows button:hover path {
   stroke: var(--Orange);
 }
 
