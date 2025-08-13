@@ -73,8 +73,10 @@ document.addEventListener("DOMContentLoaded", function () {
     mainThumbnails.forEach((thumbnail, index) => {
       if (index === currentImageIndex) {
         thumbnail.classList.add("thumbnail-active");
+        //thumbnail.classList.add("thumbnail-overlay");
       } else {
         thumbnail.classList.remove("thumbnail-active");
+        //thumbnail.classList.remove("thumbnail-overlay");
       }
     });
 

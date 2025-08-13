@@ -351,10 +351,6 @@ footer {
 .cart-button.active .cart-path {
   fill: var(--Black);
 }
-.wrapper.active {
-  border: 2px solid var(--Orange);
-  border-radius: 10%;
-}
 
 /* HOVER, FOCUS AND ACTIVE STATES END */
 
@@ -374,7 +370,7 @@ footer {
 .lightbox-main-image-container {
   display: flex;
   flex-direction: column;
-  width: clamp(23rem, 38%, 36rem);
+  width: clamp(23rem, 32%, 36rem);
   align-items: center;
 }
 
@@ -389,18 +385,18 @@ footer {
   display: flex;
   flex-direction: row;
   margin-block-start: 2rem;
-  width: min(33%, 30rem);
+  width: min(27%, 30rem);
   justify-content: space-between;
 }
 
 .lightbox-arrows {
   display: flex;
   flex-direction: row;
-  width: clamp(26rem, 42%, 38.5rem);
+  width: clamp(26rem, 35%, 38.5rem);
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  top: clamp(23rem, 45%, 46rem);
+  top: clamp(20rem, 45%, 46rem);
 }
 
 .lightbox-arrows img {
@@ -508,6 +504,16 @@ footer {
   .wrapper.active::before {
     background-color: rgba(255, 255, 255, 0.5);
   }
+
+  /*.thumbnail-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 1);
+  }*/
 
   /* HOVER, FOCUS AND ACTIVE STATES  */
 
