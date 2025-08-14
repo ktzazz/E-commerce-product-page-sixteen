@@ -22,8 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // --- 1. Seleccionar todos los elementos necesarios ---
-  // Galería principal
+  //main gallery
   const mainImages = document.querySelectorAll(".main-image img");
   const mainThumbnails = document.querySelectorAll(".thumbnail img");
   const prevArrowMain = document.querySelector(".product-gallery .prev-arrow");
@@ -39,24 +38,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevArrowLightbox = document.querySelector(".lightbox-arrow-prev");
   const nextArrowLightbox = document.querySelector(".lightbox-arrow-next");
 
-  // --- 2. Variable de estado y datos ---
+  //variable gallery data and responsive
   let currentImageIndex = 0;
   const isDesktop = window.matchMedia("(min-width: 780px)");
 
-  // --- 3. Funciones principales ---
-  /**
-   * Actualiza la imagen principal y la miniatura activa.
-   * @param {number} newIndex - El índice de la imagen que se mostrará.
-   * @param {string} type - 'main' para la galería principal, 'lightbox' para el lightbox.
-   */
+  // newIndex - the element that will be showing from the base data
+  // type - 'main' main gallety, 'lightbox' lightbox gallery
+
   function updateGallery(newIndex, type) {
-    // Lógica para que el índice se mantenga dentro del rango del array (circular)
     if (newIndex >= mainImages.length) {
       newIndex = 0;
     } else if (newIndex < 0) {
       newIndex = mainImages.length - 1;
     }
     currentImageIndex = newIndex;
+
+    // ahi se está diciendo que, la funcion "updateGallery" contiene los parametros "newIndex" y "type",
+    // y luego se dice que si "newIndex" tiene un valor mayor o igual al de la constante "mainImages",
+    // "newIndex" va a volver a la posicion 0, pero si es menor su valor a 0 entonces el valor de "newIndex" será el valor de "mainImages" menos 1,
+    // al concluir la funcion de la condición la variable "currentImageIndex" cambia su valor por el que tenga "newIndex".
+    // Y en la constante "mainImages" se le pone la propiedad ".lenght" porque es una constante que contiene un grupo de imagenes
+    // entonces estamos diciendo que es un array y que de ahi se seleccionará alguno de sus elementos.
+    // en el else if; si el índice es negativo (cuando se intenta ir "hacia atrás" desde la primera imagen), el carrusel se mueve a la última imagen, haciendo el ciclo circular.
 
     // Actualiza la imagen principal de la galería
     mainImages.forEach((img, index) => {
