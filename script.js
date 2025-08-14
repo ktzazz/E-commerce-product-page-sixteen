@@ -61,8 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // entonces estamos diciendo que es un array y que de ahi se seleccionará alguno de sus elementos.
     // en el else if; si el índice es negativo (cuando se intenta ir "hacia atrás" desde la primera imagen), el carrusel se mueve a la última imagen, haciendo el ciclo circular.
 
-    // Actualiza la imagen principal de la galería
+    // To update the image on the main gallery
     mainImages.forEach((img, index) => {
+      //forEach(currentValue(el elemento actual siendo procesado por el array, el nombre que se elija es nombre temporal para cada elemento dentro del mainImages), index(la posición del elemento actual siendo procesado por el array))
       if (index === currentImageIndex) {
         img.classList.remove("inactive");
         img.classList.add("active");
@@ -72,7 +73,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Actualiza las miniaturas de la galería
+    //se creó otra condicional en la función updateGallery, dice que,
+    //  se va a revisar la imagen actual y su posición dentro de la constante "mainImages",
+    // si el "index" tiene el mismo valor que la variable "currentImageIndex" se va a borrar la clase "inactive" y se agregará la clase "active",
+    //  pero si tiene un valor diferente se hará lo contrario, se eliminará la clase "active" y se agregará "inactive" de la img.
+    //EN RESUMEN: Para cada imagen, revisa su posición (index). Si su posición es la misma que la imagen que quiero mostrar (currentImageIndex),
+    // entonces hazla visible. Si no, hazla invisible.
+
+    // Updates the thumbnail on the main gallery, it's the same as the main Gallery
     mainThumbnails.forEach((thumbnail, index) => {
       if (index === currentImageIndex) {
         thumbnail.classList.add("thumbnail-active");
