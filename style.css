@@ -323,11 +323,11 @@ footer {
   cursor: pointer;
 }
 
-.wrapper img:focus {
+/*.wrapper img:focus {
   outline: none;
   border: 2px solid var(--Orange);
   border-radius: 10%;
-}
+}*/
 
 .cart-button:hover .cart-path {
   fill: var(--Black);
@@ -505,15 +505,22 @@ footer {
     background-color: rgba(255, 255, 255, 0.5);
   }
 
-  /*.thumbnail-overlay::before {
-    content: "";
-    position: absolute;
+  .wrapper.thumbnail-active::before {
+    content: ""; /* Obligatorio para pseudo-elementos */
+    position: absolute; /* CLAVE: Para posicionarse sobre la imagen */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 1);
-  }*/
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.75
+    ); /* El color blanco y la opacidad */
+    border: 2px solid var(--Orange);
+    z-index: 1; /* Para que esté por encima de la imagen */
+  }
 
   /* HOVER, FOCUS AND ACTIVE STATES  */
 
