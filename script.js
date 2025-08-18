@@ -104,6 +104,14 @@ document.addEventListener("DOMContentLoaded", function () {
           thumb.classList.remove("thumbnail-active");
         }
       });
+      //si el parametro "type" tiene el mismo valor que "lightbox" o si la constante "lightboxContainer" contiene la clase "show",
+      // entonces la fuente de la constante "lightboxMainImage" va a ser la misma fuente del actual "mainImage" o sea el "currentImageIndex".
+      // Luego crea la constante lightboxThumbnails que es el bonche de imagenes que hay dentro de "lightboxThumbnailsContainer",
+      // se crea un método forEach, el cual tiene una condicional que dice que si la posicion de la imagen de "lightboxThumbnails" es la misma que la de "currentImageIndex",
+      // se va a agregar la clase "thumbnail-active" pero si es diferente entonces se va a eliminar esa clase.
+      // En resumen si el lightbox se abre o si esta abierto se va a mostrar:
+      // 1. la imagen de la galeria principal que esté actualmente seleccionada
+      // 2. y se muestra la clase de esilo para las miniaturas activas en el lightbox!!
     }
   }
 
@@ -111,13 +119,23 @@ document.addEventListener("DOMContentLoaded", function () {
   function openLightbox() {
     lightboxContainer.classList.add("show");
     lightboxMainImage.src = mainImages[currentImageIndex].src;
-    // Opcional: crea las miniaturas del lightbox aquí si aún no existen
+
     if (lightboxThumbnailsContainer.children.length === 0) {
+      // esta condición evita que se dupliquen las miniaturas cada vez que se abre el lightbox.
       createLightboxThumbnails();
+      //la función createLightboxThumbnails() se llama una vez al final del script, justo al cargar la página.
+      //Esto es para que las miniaturas del lightbox estén listas desde el principio, incluso si el usuario no abre el lightbox de inmediato.
+      // La llamada dentro de openLightbox actúa como una medida de seguridad.
+      // Si por alguna razón la primera llamada fallara, el lightbox creará las miniaturas justo antes de mostrarse.
     }
-    // Sincroniza la miniatura activa en el lightbox
     updateGallery(currentImageIndex, "lightbox");
   }
+  //La función "openLightbox" va a: agregar a la constante "lightboxContainer" la clase "show",
+  // y que la fuente de "lightboxMainImage" va a ser la misma que la que se seleccionó en el index de "currentImageIndex" dentro de la constante "mainImages"
+  // la condicional dice: si ningún elemento dentro de la constante "lightboxThumbnailsContainer"
+  // está seleccionado entonces se va a activar la funcion "createLightboxThumbnails"
+  // y como último paso de la función "openLightbox" se va a activar la función "updateGallery",
+  //  que evalua en que posicion se encuentra "currentImageIndex" dentro del lightbox
 
   // Función para cerrar el lightbox
   function closeLightbox() {
