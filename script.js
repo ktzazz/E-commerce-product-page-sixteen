@@ -203,4 +203,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // puts the main gallery on the default set
   updateGallery(0, "main");
+
+  //button quantity
+  const plusButton = document.querySelector(".plus");
+  const minusButton = document.querySelector(".minus");
+  const items = document.querySelector(".quantity span");
+
+  let quantity = 0;
+  items.textContent = quantity;
+
+  plusButton.addEventListener("click", () => {
+    quantity = quantity + 1;
+    items.textContent = quantity;
+  });
+
+  minusButton.addEventListener("click", () => {
+    if (quantity > 1) {
+      quantity = quantity - 1;
+    } else {
+      quantity = 0;
+    }
+    items.textContent = quantity;
+  });
 });
