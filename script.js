@@ -208,9 +208,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const plusButton = document.querySelector(".plus");
   const minusButton = document.querySelector(".minus");
   const items = document.querySelector(".quantity span");
+  const cartButton = document.querySelector(".add-to-cart");
+  const cartItems = document.querySelector(".cart-quantity");
 
   let quantity = 0;
   items.textContent = quantity;
+  cartItems.textContent = quantity;
+
+  cartButton.addEventListener("click", () => {
+    cartItems.textContent = quantity;
+    if (quantity === 0) {
+      cartItems.classList.remove("active");
+      cartItems.classList.add("inactive");
+    } else {
+      cartItems.classList.add("active");
+      cartItems.classList.remove("inactive");
+    }
+  });
 
   plusButton.addEventListener("click", () => {
     quantity = quantity + 1;

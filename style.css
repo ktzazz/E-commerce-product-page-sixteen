@@ -61,6 +61,7 @@ header {
 }
 
 .cart {
+  position: relative;
   grid-area: 1 / 4 / 1 / 4;
   display: inline-flex;
   gap: 1rem;
@@ -70,6 +71,23 @@ header {
 
 .cart-path {
   fill: var(--Dark-grayish-blue);
+}
+
+.cart-quantity {
+  position: absolute;
+  bottom: clamp(-0.3rem, 5vw, 1rem);
+  right: clamp(2rem, 3.6vw, 2.7rem);
+  font-size: min(3vw, 0.6rem);
+  font-family: var(--Font-family);
+  font-weight: 600;
+  color: var(--White);
+  background-color: var(--Orange);
+  padding: 0.1rem 0.45rem;
+  border-radius: 1rem;
+}
+
+.active {
+  display: block;
 }
 
 .mobile-menu {
