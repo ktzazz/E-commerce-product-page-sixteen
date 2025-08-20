@@ -84,25 +84,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Updates the thumbnail on the main gallery, it's the same as the main Gallery
     mainThumbnails.forEach((thumbnail, index) => {
       if (index === currentImageIndex) {
-        thumbnail.classList.add("thumbnail-active");
-        //thumbnail.classList.add("thumbnail-overlay");
+        thumbnail.parentElement.classList.add("thumbnail-active"); //La clase thumbnail-active está en el div.wrapper en el html y js.
       } else {
-        thumbnail.classList.remove("thumbnail-active");
-        //thumbnail.classList.remove("thumbnail-overlay");
+        thumbnail.parentElement.classList.remove("thumbnail-active");
       }
     });
 
-    // Actualiza la imagen principal del lightbox si está abierto
+    // Updates the main image on the lightbox if open
     if (type === "lightbox" || lightboxContainer.classList.contains("show")) {
       lightboxMainImage.src = mainImages[currentImageIndex].src;
-      // También actualizar la clase 'active' en las miniaturas del lightbox si las creas dinámicamente.
+
       const lightboxThumbnails =
         lightboxThumbnailsContainer.querySelectorAll("img");
       lightboxThumbnails.forEach((thumb, index) => {
         if (index === currentImageIndex) {
-          thumb.classList.add("thumbnail-active");
+          thumb.parentElement.classList.add("thumbnail-active");
         } else {
-          thumb.classList.remove("thumbnail-active");
+          thumb.parentElement.classList.remove("thumbnail-active");
         }
       });
       //si el parametro "type" tiene el mismo valor que "lightbox" o si la constante "lightboxContainer" contiene la clase "show",
