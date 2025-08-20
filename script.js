@@ -63,7 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // To update the image on the main gallery
     mainImages.forEach((img, index) => {
-      //forEach(currentValue(el elemento actual siendo procesado por el array, el nombre que se elija es nombre temporal para cada elemento dentro del mainImages), index(la posición del elemento actual siendo procesado por el array))
+      //forEach(currentValue(el elemento actual siendo procesado por el array, el nombre que se elija es nombre temporal para cada elemento dentro del mainImages),
+      // index(la posición del elemento actual siendo procesado por el array))
       if (index === currentImageIndex) {
         img.classList.remove("inactive");
         img.classList.add("active");
@@ -143,21 +144,29 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Función para crear las miniaturas del lightbox (se llama una vez)
+  // La llamada a createLightboxThumbnails() dentro de openLightbox() es una medida de seguridad.
+  // Es un "por si acaso" que asegura que las miniaturas se creen justo antes de que el lightbox sea visible, en caso de que la primera llamada (o sea, esta) por alguna razón no haya funcionado.
   function createLightboxThumbnails() {
     mainThumbnails.forEach((thumbnail, index) => {
       const wrapper = document.createElement("div");
-      wrapper.classList.add("wrapper"); // Agrega la clase wrapper si la necesitas
+      wrapper.classList.add("wrapper");
 
       const lightboxThumbnail = thumbnail.cloneNode(true);
       lightboxThumbnail.classList.add("lightbox-thumbnail-img");
 
-      // Asigna un evento de clic a las miniaturas del lightbox
       wrapper.addEventListener("click", () => updateGallery(index, "lightbox"));
 
       wrapper.appendChild(lightboxThumbnail);
       lightboxThumbnailsContainer.appendChild(wrapper);
     });
   }
+  // el metodo "forEach" va a hacer que, cada elemento elemento actual seleccionado dentro del "mainThumbnails", va a:
+  //1. crear un div llamado "wrapper" y va a agregar la clase "wrapper" a ese div,
+  //2. crea la constante "lightboxThumbnail", que es le copia de todo lo que contenga el elemento "thumbnail" seleccionado dentro de "mainThumbnails"
+  //3. se agrega al div "wrapper" el que al darle clic se activará la función "updateGallery", esta función no solo "muestra" el elemento,
+  // sino que también sincroniza la imagen principal del lightbox con la miniatura en la que se hizo clic.
+  //4. se va a agregar el elemento "lightboxThumbnail" al div "wrapper"
+  //5. el elemento "wrapper" se va a agregar al div "lightboxThumbnailContainer"
 
   // --- 4. Eventos de la galería principal (móvil y escritorio) ---
   // Navegación con flechas
