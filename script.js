@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Función para abrir el lightbox
+  // Function to open Lightbox
   function openLightbox() {
     lightboxContainer.classList.add("show");
     lightboxMainImage.src = mainImages[currentImageIndex].src;
@@ -138,14 +138,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // y como último paso de la función "openLightbox" se va a activar la función "updateGallery",
   //  que evalua en que posicion se encuentra "currentImageIndex" dentro del lightbox
 
-  // Función para cerrar el lightbox
+  // Function to close
   function closeLightbox() {
     lightboxContainer.classList.remove("show");
   }
 
   // Función para crear las miniaturas del lightbox (se llama una vez)
   // La llamada a createLightboxThumbnails() dentro de openLightbox() es una medida de seguridad.
-  // Es un "por si acaso" que asegura que las miniaturas se creen justo antes de que el lightbox sea visible, en caso de que la primera llamada (o sea, esta) por alguna razón no haya funcionado.
+  // Es un "por si acaso" que asegura que las miniaturas se creen justo antes de que el lightbox sea visible, en caso de que la primera llamada (o sea, la de hasta abajo) por alguna razón no haya funcionado.
   function createLightboxThumbnails() {
     mainThumbnails.forEach((thumbnail, index) => {
       const wrapper = document.createElement("div");
@@ -168,8 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //4. se va a agregar el elemento "lightboxThumbnail" al div "wrapper"
   //5. el elemento "wrapper" se va a agregar al div "lightboxThumbnailContainer"
 
-  // --- 4. Eventos de la galería principal (móvil y escritorio) ---
-  // Navegación con flechas
+  // Arrow navigation Main gallery
   prevArrowMain.addEventListener("click", () =>
     updateGallery(currentImageIndex - 1, "main")
   );
@@ -177,12 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
     updateGallery(currentImageIndex + 1, "main")
   );
 
-  // Navegación con miniaturas
+  // Thumbnail navigation Main gallery
   mainThumbnails.forEach((thumbnail, index) => {
     thumbnail.addEventListener("click", () => updateGallery(index, "main"));
   });
 
-  // Abrir lightbox solo en escritorio al hacer clic en la imagen principal
+  // on click event to open lightbox when clicked the main image on desktop
   const mainImageContainer = document.querySelector(".main-image");
   mainImageContainer.addEventListener("click", () => {
     if (isDesktop.matches) {
@@ -190,9 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // --- 5. Eventos del lightbox (solo escritorio) ---
+  //to active the function when clicked
   closeLightboxBtn.addEventListener("click", closeLightbox);
 
+  // Arrow navigation Lightbox
   prevArrowLightbox.addEventListener("click", () =>
     updateGallery(currentImageIndex - 1, "lightbox")
   );
@@ -200,9 +200,9 @@ document.addEventListener("DOMContentLoaded", function () {
     updateGallery(currentImageIndex + 1, "lightbox")
   );
 
-  // Llama a esta función al inicio para crear las miniaturas del lightbox
+  // create thumbnails on lightbox
   createLightboxThumbnails();
 
-  // Inicializa la galería
+  // puts the main gallery on the default set
   updateGallery(0, "main");
 });
