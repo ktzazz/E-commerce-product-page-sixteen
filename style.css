@@ -453,11 +453,9 @@ footer {
 .cart-modal {
   position: absolute;
   top: clamp(4rem, 11%, 15rem);
-  left: calc(77% - 15rem);
   background-color: var(--White);
-  width: 30rem;
+  width: 92vw;
   height: auto;
-  padding: 2rem;
   border-radius: 10px;
   box-shadow: 0px 2rem 2rem 0px rgba(0, 0, 0, 0.2);
 }
@@ -469,15 +467,26 @@ footer {
 }
 
 #cart-modal-title {
-  font-size: 1.2rem;
+  display: inline-block;
+  font-size: 1rem;
   font-weight: var(--font-weight-bold);
+  padding: 1.5rem;
+}
+
+.cart-modal-title {
+  border-block-end: 1px solid hsl(220, 9%, 87%);
 }
 
 .cart-modal-item-empty {
-  text-align: center;
-  color: var(--Dark-grayish-blue);
+  display: flex;
+  justify-content: center;
   font-size: 1rem;
+  color: var(--Dark-grayish-blue);
   font-weight: var(--font-weight-bold);
+}
+
+.div-empty {
+  padding: 4rem;
 }
 
 @media (min-width: 768px) {
@@ -662,5 +671,15 @@ footer {
 
   .add-to-cart {
     box-shadow: 1px 18px 3rem 0px rgba(255, 125, 26, 0);
+  }
+
+  .cart-modal {
+    position: absolute;
+    left: calc(76% - 10rem);
+    width: 25rem;
+  }
+
+  .div-empty {
+    padding: 3.2rem;
   }
 }
