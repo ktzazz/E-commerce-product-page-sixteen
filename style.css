@@ -345,12 +345,6 @@ footer {
   fill: var(--Black);
 }
 
-.cart-button:focus {
-  outline: none;
-  border: 1px solid var(--Orange);
-  padding: 0.2rem;
-}
-
 .add-to-cart:hover {
   background-color: rgba(255, 125, 26, 0.527);
 }
@@ -464,7 +458,7 @@ footer {
   height: auto;
   border-radius: 10px;
   box-shadow: 0px 2rem 2rem 0px rgba(0, 0, 0, 0.2);
-  z-index: 200;
+  z-index: 99;
 }
 
 .cart-modal {
