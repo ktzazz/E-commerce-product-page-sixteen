@@ -208,14 +208,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const plusButton = document.querySelector(".plus");
   const minusButton = document.querySelector(".minus");
   const items = document.querySelector(".quantity span");
-  const cartButton = document.querySelector(".add-to-cart");
+  const addButton = document.querySelector(".add-to-cart");
   const cartItems = document.querySelector(".cart-quantity");
 
   let quantity = 0;
   items.textContent = quantity;
   cartItems.textContent = quantity;
 
-  cartButton.addEventListener("click", () => {
+  addButton.addEventListener("click", () => {
     cartItems.textContent = quantity;
     if (quantity === 0) {
       cartItems.classList.remove("active");
@@ -238,5 +238,20 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity = 0;
     }
     items.textContent = quantity;
+  });
+
+  const cartButton = document.querySelector(".cart-button");
+  const cartModal = document.querySelector(".div-cart-modal");
+  const cartEmpty = document.querySelector(".div-empty");
+  const cartPurchase = document.querySelector(".div-purchase");
+
+  cartButton.addEventListener("click", () => {
+    if (cartModal.classList.contains("inactive")) {
+      cartModal.classList.remove("inactive");
+      cartModal.classList.add("active");
+    } else {
+      cartModal.classList.remove("active");
+      cartModal.classList.add("inactive");
+    }
   });
 });
