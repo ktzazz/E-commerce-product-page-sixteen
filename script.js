@@ -212,17 +212,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const cartItems = document.querySelector(".cart-quantity");
 
   let quantity = 0;
+  const itemPrice = 125.0;
+
   items.textContent = quantity;
   cartItems.textContent = quantity;
 
   addButton.addEventListener("click", () => {
-    cartItems.textContent = quantity;
-    if (quantity === 0) {
-      cartItems.classList.remove("active");
-      cartItems.classList.add("inactive");
+    if (quantity > 0) {
+      cartEmpty.classList.add("inactive");
+      cartPurchase.classList.remove("inactive");
+
+      const purchaseQuantity = document.querySelector(".CMI-quantity");
+      const purchaseTotal = document.querySelector(".CMI-total");
+
+      purchaseQuantity.textContent = `x ${quantity}`; //is the same as 'x'+ quantity. But that way is easier ?
+
+      const total = itemPrice * quantity;
+      purchaseTotal.textContent = `$${total.toFixed(2)}`; //always have 2 decimals
     } else {
-      cartItems.classList.add("active");
+      cartEmpty.classList.remove("inactive");
+      cartPurchase.classList.add("inactive");
+    }
+
+    cartItems.textContent = quantity;
+    if (quantity > 0) {
       cartItems.classList.remove("inactive");
+    } else {
+      cartItems.classList.add("inactive");
     }
   });
 
@@ -240,18 +256,27 @@ document.addEventListener("DOMContentLoaded", function () {
     items.textContent = quantity;
   });
 
+  //cart
   const cartButton = document.querySelector(".cart-button");
-  const cartModal = document.querySelector(".div-cart-modal");
+  const cartModal = document.querySelector(".div-shop");
   const cartEmpty = document.querySelector(".div-empty");
   const cartPurchase = document.querySelector(".div-purchase");
+  const deleteIcon = document.querySelector(".delete-icon");
 
   cartButton.addEventListener("click", () => {
     if (cartModal.classList.contains("inactive")) {
       cartModal.classList.remove("inactive");
-      cartModal.classList.add("active");
     } else {
-      cartModal.classList.remove("active");
       cartModal.classList.add("inactive");
     }
+  });
+
+  deleteIcon.addEventListener("click", () => {
+    cartEmpty.classList.remove("inactive");
+    cartPurchase.classList.add("inactive");
+
+    cartItems.classList.add("inactive");
+    quantity = 0;
+    items.textContent = quantity;
   });
 });

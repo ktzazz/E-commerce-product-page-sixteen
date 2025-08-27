@@ -450,6 +450,12 @@ footer {
 
 /* CART MODAL */
 
+.div-shop {
+  position: absolute;
+  width: 92vw;
+  top: 1rem;
+}
+
 .cart-modal {
   position: absolute;
   top: clamp(4rem, 11%, 15rem);
@@ -534,6 +540,7 @@ footer {
 
 .cart-modal-item svg:hover {
   fill: var(--Orange);
+  cursor: pointer;
 }
 
 .checkout-button {
@@ -550,6 +557,7 @@ footer {
 
 .checkout-button:hover {
   background-color: rgba(255, 125, 26, 0.527);
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -669,7 +677,7 @@ footer {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1300px) {
   h2 {
     padding-inline-end: 0;
   }
@@ -749,9 +757,14 @@ footer {
     box-shadow: 1px 18px 3rem 0px rgba(255, 125, 26, 0);
   }
 
+  .div-shop {
+    top: 2rem;
+    margin: 0 2rem;
+  }
+
   .cart-modal {
     position: absolute;
-    left: calc(76% - 10rem);
+    left: calc(60% + 5rem);
     width: 25rem;
   }
 
