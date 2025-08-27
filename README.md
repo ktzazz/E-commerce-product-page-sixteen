@@ -23,7 +23,7 @@ Users should be able to:
 ### Screenshot
 
 ![Desktop](Result/Desktop.jpeg)
-![DesktopActive](Result\DesktopActive.jpeg)
+![DesktopActive](Result/DesktopActive.jpeg)
 ![Lightbox](Result/Lightbox.jpeg)
 ![Tablet](Result/Tablet.jpeg)
 ![TabletActive](Result/TabletActive.jpeg)
